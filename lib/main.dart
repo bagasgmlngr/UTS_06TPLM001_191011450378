@@ -5,111 +5,254 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: ShoesScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class ShoesScreen extends StatefulWidget {
+  const ShoesScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ShoesScreen> createState() => _ShoesScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class _ShoesScreenState extends State<ShoesScreen> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+                child: Row(
+                  children: [
+                    Text('Shoes',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 200),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_960_720.jpg'),
+                        radius: 28,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.only(left: 18,),
+                height: 120,
+                width: MediaQuery.of(context).size.width*.9,
+                decoration: BoxDecoration(
+                  color: Colors.brown.shade100,
+                  borderRadius: BorderRadius.circular(36)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Nike SB Zoom Blazer',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
+                        ),),
+                        Text('Mid Premium',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),),
+                        Text('8,795 USD',
+                        style: TextStyle(
+                          fontSize: 12,
+                          height: 3,
+                          fontWeight: FontWeight.bold
+                        ),),
+                      ],
+                    ),
+                    Image.network('https://o.remove.bg/downloads/9c0b203f-b21d-4221-8d7e-27628f0cc238/pngegg__7_-removebg-preview.png',
+                    scale: 4,),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.only(left: 18, right: 10),
+                height: 120,
+                width: MediaQuery.of(context).size.width*.9,
+                decoration: BoxDecoration(
+                    color: Colors.purpleAccent.shade100,
+                    borderRadius: BorderRadius.circular(36)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Nike Air Zoom Pegasus',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),),
+                        Text('Mens Rood Running Shoes',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),),
+                        Text('9,995 USD',
+                          style: TextStyle(
+                            fontSize: 12,
+                            height: 3,
+                            fontWeight: FontWeight.bold
+                          ),),
+                      ],
+                    ),
+                    Image.network('https://o.remove.bg/downloads/d9acee11-2172-426b-adfa-6574c5abd13a/PngItem_5030270-removebg-preview.png',
+                    scale: 6),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.only(left: 13),
+                height: 120,
+                width: MediaQuery.of(context).size.width*.9,
+                decoration: BoxDecoration(
+                    color: Colors.pinkAccent.shade100,
+                    borderRadius: BorderRadius.circular(36)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Nike ZoomX Vaporfly',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),),
+                        Text('Mens Rood Racing Shoes',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),),
+                        Text('19,695 USD',
+                          style: TextStyle(
+                            fontSize: 12,
+                            height: 3,
+                            fontWeight: FontWeight.bold,
+                          ),),
+                      ],
+                    ),
+                    Image.network('https://o.remove.bg/downloads/fd619bc3-1e35-409a-8ca7-ebf789f85943/PngItem_2409085-removebg-preview.png',
+                    scale: 6),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.only(left: 18,),
+                height: 120,
+                width: MediaQuery.of(context).size.width*.9,
+                decoration: BoxDecoration(
+                    color: Colors.blueGrey.shade100,
+                    borderRadius: BorderRadius.circular(36)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Nike Air Force 1 Black',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),),
+                        Text('Older Kids Shoes',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),),
+                        Text('6.295 USD',
+                          style: TextStyle(
+                            fontSize: 12,
+                            height: 3,
+                            fontWeight: FontWeight.bold
+                          ),),
+                      ],
+                    ),
+                    Image.network('https://o.remove.bg/downloads/4b4feeb5-4197-4902-9271-d8b6f43ac5ca/Nike-Air-Force-1-Low-Black-Wolf-Grey-CJ8731-001-Release-Date-4-removebg-preview.png',
+                    scale: 4,),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.only(left: 18, right: 10),
+                height: 120,
+                width: MediaQuery.of(context).size.width*.9,
+                decoration: BoxDecoration(
+                    color: Colors.yellowAccent.shade100,
+                    borderRadius: BorderRadius.circular(36)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Nike Waffle One',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),),
+                        Text('Mens Shoes',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),),
+                        Text('8,285 USD',
+                          style: TextStyle(
+                            fontSize: 12,
+                            height: 3,
+                            fontWeight: FontWeight.bold,
+                          ),),
+                      ],
+                    ),
+                    Image.network('https://o.remove.bg/downloads/667066ba-d938-4db5-994f-668c8993476d/PngItem_6782458-removebg-preview.png',
+                    scale: 5,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
